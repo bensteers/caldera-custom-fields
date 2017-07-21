@@ -447,7 +447,11 @@ function cf_custom_fields_capture_entry($config, $form){
 		 * @param array $form Form config @since 2.2.0
 		 */
 		$value = apply_filters( 'cf_custom_fields_pre_save_meta_key_to_post_type', $value, $slug, $entry_id, $field, $form );
-		update_post_meta( $entry_id, $slug, $value );
+		if(isset($processor['config']['use_acf']) && $processor['config']['use_acf']){
+			update_field($slug, $value, $entry_id);
+		} else {
+			update_post_meta( $entry_id, $slug, $value );
+		}
 
 		/**
 		 * Runs after value is saved using to post type processor
