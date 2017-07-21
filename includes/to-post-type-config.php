@@ -143,3 +143,17 @@
 	<?php esc_html_e( 'File fields will be uploaded to the Media Library and attached to post.', 'caldera-forms-metabox' ); ?>
 </p>
 
+<?php if( class_exists('acf') ) { ?>
+<div class="caldera-config-group">
+	<label>
+		<?php esc_html_e( 'Use ACF to update custom fields', 'caldera-forms-metabox' ); ?>
+	</label>
+	<div class="caldera-config-field">
+		<input type="checkbox" class="block-input field-config" name="{{_name}}[use_acf]"
+		       value="{{use_acf}}">
+		<p class="description">
+			<?php esc_html_e( 'Uses update_field in place of update_post_meta.', 'caldera-forms-metabox' ); ?>
+		</p>
+	</div>
+</div>
+<?php } ?>
